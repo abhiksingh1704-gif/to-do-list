@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Welcome</title>
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            margin: 0;
+            background: url('background.png') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgb(202, 39, 18);
+            overflow: hidden;
+            position: relative;
+            flex-direction: column;
+        }
+
+        /* Top title */
+        h1.page-title {
+            position: absolute;
+            top: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            z-index: 2;
+        }
+
+        /* Blur overlay for modern glass effect */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            backdrop-filter: blur(5px); /* Blur the background */
+            background: rgba(198, 216, 32, 0.3); /* Slight dark overlay */
+            z-index: 1;
+        }
+
+        .wrapper {
+            position: relative;
+            text-align: center;
+            z-index: 3; /* Above blur overlay */
+            animation: fadeIn 1.2s ease-out;
+            max-width: 90vw;
+            padding: 30px 20px;
+            border-radius: 15px;
+            background: rgba(13, 13, 13, 0.1); /* translucent glass effect */
+            backdrop-filter: blur(5px); /* additional blur behind wrapper */
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            opacity: 0;
+            animation: fadeIn 1.9s ease forwards;
+        }
+
+        /* Team members list */
+        .team-members {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeIn 2.2s ease forwards;
+            color: #c219b1;
+        }
+
+        .team-members span {
+            display: inline-block;
+            margin: 0 10px;
+            font-weight: 600;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        a button {
+            padding: 14px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            color: #faf8f7;
+            background: rgba(219, 11, 11, 0.2);
+            backdrop-filter: blur(4px);
+            transition: 0.3s;
+            min-width: 140px;
+            margin: 6px 0;
+        }
+
+        a button:hover {
+            transform: scale(1.1);
+            background: rgba(6, 9, 1, 0.35);
+        }
+
+        a button:focus {
+            outline: 2px solid #1c1313;
+            outline-offset: 2px;
+        }
+
+        @media (max-width: 480px) {
+            h1.page-title { font-size: 22px; top: 15px; }
+            h2 { font-size: 18px; }
+            .team-members { font-size: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top title -->
+    <h1 class="page-title">Dr. A.P.J. Abdul Kalam Technical University, Lucknow</h1>
+
+    <div class="wrapper">
+        <h2>My Project: To-Do List App</h2>
+
+        <div class="team-members">
+            Team Members: 
+            <span>Abhishek Kumar</span>
+            <span>Arnav Raj</span>
+            <span>Aman</span>
+        </div>
+        <div class="buttons">
+            <a href="todo.html">
+                <button>Enter Project</button>
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
