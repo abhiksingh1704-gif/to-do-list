@@ -11,7 +11,8 @@ document.getElementById("taskForm").addEventListener("submit", function(e) {
 
 function addTask() {
     const input = document.getElementById("taskInput");
-    
+    if (!input.value.trim()) return;
+
     const newTask = {
         id: Date.now(),
         text: input.value,
@@ -21,13 +22,12 @@ function addTask() {
     tasks.push(newTask);
     saveTasks();
     renderTasks();
-
     input.value = "";
 }
 
 function editTask(id) {
     const newText = prompt("Edit your task:");
-    if (!newText || newText.trim() === "") return;
+    if (!newText || !newText.trim()) return;
 
     tasks = tasks.map(task => 
         task.id === id ? { ...task, text: newText } : task
@@ -84,75 +84,44 @@ function renderTasks() {
 }
 
 /* ========================
-   EXPORT TASKS (JSON)
+   EXPORT TASKS (.TXT)
 ======================== */
-document.getElementById("exportBtn").addEventListener("click", exportTasks);
-
-function exportTasks() {
-    const data = JSON.stringify(tasks, null, 2);
-
-    const blob = new Blob([data], { type: "application/json" });
+document.getElementById("exportBtn").addEventListener("click", function() {
+    const data = tasks.map(t => (t.completed ? "[x] " : "[ ] ") + t.text).join("\n");
+    const blob = new Blob([data], { type: "text/plain" });
     const url = URL.createObjectURL(blob);
 
     const a = document.createElement("a");
     a.href = url;
-    a.download = "tasks.json";
+    a.download = "tasks.txt";
     a.click();
 
     URL.revokeObjectURL(url);
-}
+});
 
 /* ========================
-   IMPORT TASKS (JSON)
+   IMPORT TASKS (.TXT)
 ======================== */
 document.getElementById("importBtn").addEventListener("click", () => {
     document.getElementById("importFile").click();
 });
 
-document.getElementById("importFile").addEventListener("change", importTasks);
-
-function importTasks(event) {
-    const file = event.target.files[0];
+document.getElementById("importFile").addEventListener("change", function(e) {
+    const file = e.target.files[0];
     if (!file) return;
 
     const reader = new FileReader();
-
     reader.onload = function(e) {
-        try {
-            const importedTasks = JSON.parse(e.target.result);
+        const lines = e.target.result.split("\n").filter(l => l.trim() !== "");
+        tasks = lines.map(line => {
+            const completed = line.startsWith("[x]");
+            const text = line.slice(4).trim();
+            return { id: Date.now() + Math.random(), text, completed };
+        });
 
-            if (!Array.isArray(importedTasks)) {
-                alert("Invalid file format");
-                return;
-            }
-
-            tasks = importedTasks;
-            saveTasks();
-            renderTasks();
-            alert("Tasks imported successfully!");
-
-        } catch (err) {
-            alert("Invalid JSON file");
-        }
+        saveTasks();
+        renderTasks();
+        alert("Tasks imported successfully!");
     };
-
     reader.readAsText(file);
-}
-const toggleBtn = document.getElementById('darkModeToggle');
-
-// Load saved preference
-if(localStorage.getItem('darkMode') === 'enabled'){
-  document.body.classList.add('dark-mode');
-}
-
-toggleBtn.addEventListener('click', () => {
-  document.body.classList.toggle('dark-mode');
-  
-  if(document.body.classList.contains('dark-mode')){
-    localStorage.setItem('darkMode', 'enabled');
-    toggleBtn.textContent = "☀️ Light Mode";
-  } else {
-    localStorage.setItem('darkMode', 'disabled');
-    toggleBtn.textContent = "🌙 Dark Mode";
-  }
 });
