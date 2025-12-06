@@ -9,11 +9,41 @@
 /* Background */
 body {
     margin: 0;
-    padding: 40px;
+    padding: 40px 0;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     background: linear-gradient(135deg, #74ebd5 0%, #9face6 100%);
     min-height: 100vh;
+}
+
+/* Headline */
+h1 {
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.7rem;
+    font-weight: 700;
+    color: #007bff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    animation: fadeInDown 1s ease-out;
+}
+
+h1::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 4px;
+    background: #ff6f61;
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* To-do App Container */
@@ -23,42 +53,6 @@ body {
     width: 380px;
     border-radius: 12px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-}
-
-/* Headline */
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 2.2rem;
-    font-weight: bold;
-    color:#333333;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    position: relative;
-    animation: fadeInDown 1s ease-out;
-}
-
-/* Decorative underline */
-h1::after {
-    content: '';
-    display: block;
-    width: 80px;
-    height: 4px;
-    background: #ff6f61;
-    margin: 8px auto 0;
-    border-radius: 2px;
-}
-
-/* Headline animation */
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 /* Form */
@@ -85,15 +79,10 @@ button {
     transition: 0.2s;
 }
 
-button:hover {
-    background: #0056b3;
-}
+button:hover { background: #0056b3; }
 
 /* Task List */
-ul {
-    list-style: none;
-    padding: 0;
-}
+ul { list-style: none; padding: 0; }
 
 .task {
     background: #fafafa;
@@ -122,24 +111,10 @@ ul {
     cursor: pointer;
 }
 
-.complete-btn {
-    background: #28a745;
-    color: white;
-}
-
-.edit-btn {
-    background: #ffc107;
-    color: black;
-}
-
-.delete-btn {
-    background: #dc3545;
-    color: white;
-}
-
-.task-buttons button:hover {
-    opacity: 0.8;
-}
+.complete-btn { background: #28a745; color: white; }
+.edit-btn     { background: #ffc107; color: black; }
+.delete-btn   { background: #dc3545; color: white; }
+.task-buttons button:hover { opacity: 0.8; }
 
 /* Import / Export Buttons */
 .import-export {
@@ -158,37 +133,12 @@ ul {
     transition: 0.2s;
 }
 
-#importBtn:hover, #exportBtn:hover {
-    background: #4b42d1;
-}
+#importBtn:hover, #exportBtn:hover { background: #4b42d1; }
 
 /* Dark Mode */
-body.dark-mode {
-    background: #121212;
-    color: #f1f1f1;
-}
-
-body.dark-mode .todo-app {
-    background: #1e1e1e;
-    box-shadow: 0 4px 15px rgba(255,255,255,0.1);
-}
-
-body.dark-mode h1 {
-    color: #6c63ff;
-}
-
-body.dark-mode h1::after {
-    background: #ffb347;
-}
-
-body.dark-mode li,
-body.dark-mode .task {
-    background: #2a2a2a;
-    color: #ddd;
-}
-
-body.dark-mode .task.completed {
-    background: #335533;
-    color: #aaa;
-}
-
+body.dark-mode { background: #121212; color: #f1f1f1; }
+body.dark-mode .todo-app { background: #1e1e1e; box-shadow: 0 4px 15px rgba(255,255,255,0.1); }
+body.dark-mode h1 { color: #6c63ff; }
+body.dark-mode h1::after { background: #ffb347; }
+body.dark-mode li, body.dark-mode .task { background: #2a2a2a; color: #ddd; }
+body.dark-mode .task.completed { background: #335533; color: #aaa; }
