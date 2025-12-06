@@ -1,38 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>To-Do List App</title>
-    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<section class="todo-app">
+    <!-- Headline -->
     <h1>To-Do List</h1>
-    <button id="darkModeToggle">🌙 Dark Mode</button>
-    <form id="taskForm">
-        <input 
-            type="text" 
-            id="taskInput" 
-            placeholder="Enter a new task..." 
-            required
-        />
-        <button type="submit" id="addBtn">Add</button>
-    </form>
 
-    <ul id="taskList"></ul>
+    <!-- To-Do App -->
+    <div class="todo-app">
+        <form id="taskForm">
+            <input id="taskInput" type="text" placeholder="Add a task...">
+            <button type="submit">Add</button>
+        </form>
 
-    <!-- Import / Export Section -->
-    <div class="import-export">
-        <button id="exportBtn">Export Tasks</button>
+        <ul id="taskList"></ul>
 
-        <input type="file" id="importFile" accept=".json" hidden>
-        <button id="importBtn">Import Tasks</button>
+        <div class="import-export">
+            <button id="importBtn">Import</button>
+            <button id="exportBtn">Export</button>
+        </div>
+
+        <input type="file" id="importFile" accept=".txt" style="display:none">
     </div>
-</section>
 
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
-
