@@ -116,7 +116,70 @@ ul {
     cursor: pointer;
     transition: 0.2s;
 }
+/* Main container */
+.todo-container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  font-family: 'Poppins', sans-serif;
+}
 
+/* Input + button row */
+.todo-input {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.todo-input input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.todo-input button {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.todo-input button:hover {
+  background: #45a049;
+  box-shadow: 0 0 10px rgba(72, 239, 128, 0.6);
+}
+
+/* Task list */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: #f9f9f9;
+  margin-bottom: 10px;
+  padding: 12px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.3s ease;
+}
+
+li.completed {
+  text-decoration: line-through;
+  color: #888;
+  background: #e0ffe0;
+}
 #importBtn:hover, #exportBtn:hover {
     background: #4b42d1;
 }
+
