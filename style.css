@@ -182,4 +182,23 @@ li.completed {
 #importBtn:hover, #exportBtn:hover {
     background: #4b42d1;
 }
+body.dark-mode {
+  background: #121212;
+  color: #f1f1f1;
+}
+
+body.dark-mode .todo-container {
+  background: #1e1e1e;
+  box-shadow: 0 4px 15px rgba(255,255,255,0.1);
+}
+
+body.dark-mode li {
+  background: #2a2a2a;
+  color: #ddd;
+}
+
+body.dark-mode li.completed {
+  background: #335533;
+  color: #aaa;
+}
 
